@@ -28,7 +28,11 @@ setup(name='plonekonf.talk',
           'setuptools',
           'five.grok',
           'plone.app.dexterity [grok]',
+          'plone.app.referenceablebehavior',
+          'plone.app.relationfield',
+          'plone.namedfile [blobs]',
           'z3c.autoinclude',
+
           # -*- Extra requirements: -*-
       ],
       entry_points="""
