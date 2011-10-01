@@ -26,7 +26,9 @@ setup(name='plonekonf.talk',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.dexterity',
+          'five.grok',
+          'plone.app.dexterity [grok]',
+          'z3c.autoinclude',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
