@@ -20,6 +20,7 @@
  <property name="klass">plone.dexterity.content.Item</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
+  <element value="plonekonf.talk.interfaces.IVoting"/>
   <element
      value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
   <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
