@@ -17,6 +17,8 @@
     
         <div tal:content="structure context/details/output" />
 
+        <img tal:replace="structure context/@@images/image/preview" />
+
         <p>Referent: <br />
             <strong tal:content="context/Creator">
                 UserName
