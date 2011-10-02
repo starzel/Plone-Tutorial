@@ -8,79 +8,21 @@
 <body>
 
 <metal:content-core fill-slot="content-core">
-    <div tal:content="view/some_variable">
-        Dieser Text verschwindet
-    </div>
-    <div tal:content="python: view.eine_methode_mit_parameter(1,2, 'Hallo')">
-        Dieser Text verschwindet auch
-    </div>
-    <div tal:content="string: Hallo Welt $view/some_method_without_params">
-        Dieser Text verschwindet... auch
-    </div>
-    <div tal:content="string: <h1>Hallo Welt</h1>">
-        Das wird ersetzt durch einen String der mit h1 angezeigt wird aber
-        keine Úberschrift ist
-    </div>
-    <div tal:content="structure string: <h1>Hallo Welt</h1>">
-         Hier wird tatsächlich Hallo Welt als Überschrift stehen
-    </div>
-    <tal:replace tal:replace="view/ein_dict/ein_key">
-        Der Text verschwindet sogar mit dem Tag
-    </tal:replace>
-    <ul>
-        <!--
-            tal:repeat wiederholt das html element für jedes item einer Liste
-            tal:omit-tag Sorgt dafür, das der Inhalt des Tags gezeigt wird,
-            der Tag selbst aber nicht.
-            mit tal:define kann man variablen definieren.
-            mit tal:attributes kann man html attribute setzen.
-            Die Syntax von define und attributes ist ganz ähnlich. Zuerst g
-            ibt man eine Variable/Attribut an, das trennt man durch ein
-            Leerzeichen von der Definition. Dann schreibt man die sogenannte
-            Tales Expression, die genauso funktioniert wie bei tal:content.
-            Wenn man mehrere Attribute oder Variablen definieren will, trennt
-            man diese mit Semikolon.
-            Das Beispiel ist ein wenig komplex, aber tal:repeats werden oft
-            sehr komplex, damit ist das Beispiel gar nicht so unrealistisch.
-            -->
-        <tal:repeat 
-            tal:omit-tag=""
-            tal:repeat="number python:[1,2,3,4,5]"
-            tal:define="square python: number * number;
-                        even repeat/number/even">
-        <li 
-            tal:attributes="class python: (even and 'even') or 'odd'"
-            tal:content="number">
-        <li 
-            tal:attributes="class python: (even and 'even') or 'odd'"
-            tal:content="square">Hier wird jeweils das Quadrat von 1 bis 5 stehen</li>
-    </ul>
 
-    <div tal:condition="view/this_should_never_happen">
-        Dieser Text sollte nie angezeigt werden, den this_should_never_happen
-        sollte immer False zurückliefern
-    </div>
-    <div tal:condition="not: view/this_should_never_happen">
-        Dieser Text sollte immer angezeigt werden, den this_should_never_happen
-        sollte immer False zurückliefern, welches durch not: negiert wird.
-    </div>
-    <div class="alarm" metal:define-macro="alarm">
-        ALARM ALARM ALARM
-        <div class="alarm_message" metal:define-slot="alarm_message">
-            Dieser Text erscheint, wenn das Macro verwendet wird, aber der Slot nicht gefüllt wird.
-        </div>
-    </div>
-
-    <ul>
-        <li tal:repeat="alarm_id python: [1,2,3,4,5]">
-            <div metal:use-macro="alarm">
-                <div metal:fill-slot="alarm_message">
-                    <span tal:replace="string: Das ist alarm $alarm_id" />
-                </div>
-            </div>
-        </li>
-    </ul>
+        <p>Geeignet für
+            <span tal:replace="structure context/audience">
+                ein Publikum
+            </span>
+        </p>
     
+        <div tal:content="structure context/details/output" />
+
+        <p>Referent: <br />
+            <strong tal:content="context/Creator">
+                UserName
+            </strong>
+        </p>
+
 </metal:content-core>
 
 </body>
