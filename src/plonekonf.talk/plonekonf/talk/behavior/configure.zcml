@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone">
+
+  <plone:behavior
+      title="Voting"
+      description="Allow voting for an item"
+      provides="plonekonf.talk.interfaces.IVoting"
+      factory=".voting.Vote"
+      marker="plonekonf.talk.interfaces.IVotable"
+      />
+
+</configure>
