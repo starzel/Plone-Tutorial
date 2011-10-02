@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+  <body>
+
+    <metal:content-core fill-slot="content-core">
+      <table class="talks listing">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Zielgruppe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+              tal:repeat="talk view/talks"
+              tal:attributes="id talk/uuid"
+              >
+            <td>
+              <a href="#"
+                 tal:attributes="href talk/absolute_url"
+                 tal:content="talk/title"
+                 />
+            </td>
+            <td 
+                tal:content="talk/audience"
+                />
+          </tr>
+        </tbody>
+      </table>
+    </metal:content-core>
+    
+  </body>
+</html>
+
